@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+#parse("layout/partials/head.html")
+<body class="no-skin" style="width: 100%;margin: 0px;padding: 0px;font-family: 'Microsoft Yahei', Arial, Helvetica, sans-serif;">
+	<div class="navbar-container" id="navbar-container" style="position: fixed;z-index:99;top:0px;height:129px;width: 100%;margin: 0px;padding: 0px;">
+		#parse("layout/partials/header.html")
+		<div id="navbar" class="navbar navbar-default">
+			<script type="text/javascript">
+				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+			</script>
+
+			#parse("layout/partials/menu.html")
+		</div>
+	</div>
+		<!-- /section:basics/navbar.layout -->
+		<div class="main-container" id="main-container" style="position: relative;height: auto;margin-top: 129px;">
+			<script type="text/javascript">
+			try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+			
+			<!-- PAGE CONTENT BEGINS -->
+				$screen_content
+			<!-- PAGE CONTENT ENDS -->
+		</div>
+	<div class="footer" style="height: 90px;width: 100%;left:0;bottom: 0;background-color:#2a6496;position: relative;margin-top: 50px;">
+			#parse("layout/partials/footer.html")
+	</div>
+	#parse("layout/partials/foot.html")	
+</body>
+
+
+</html>

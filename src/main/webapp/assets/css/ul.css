@@ -1,0 +1,10 @@
+#topMenu ul {
+	list-style: none;
+	height: auto;
+}
+
+#topMenu li {
+	float: left;
+	width: 180px;
+	font-size: medium;
+}

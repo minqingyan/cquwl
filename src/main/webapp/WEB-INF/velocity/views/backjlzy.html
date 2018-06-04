@@ -1,0 +1,186 @@
+
+<!-- #section:basics/sidebar -->
+<div id="sidebar" class="sidebar  responsive">
+	<script type="text/javascript">
+					try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+				</script>
+	<ul class="nav nav-list">
+		<li  class=""><a href="backzhzy" > <i class="menu-icon fa fa-tachometer"></i> <span class="menu-text" >
+					综合最优 </span>
+		</a></li>
+		<li class=""><a href="backpjzy" > <i class="menu-icon fa fa-desktop"></i> <span class="menu-text" >
+					评价最优 </span>
+		</a></li>
+
+		<li class=""><a href="backjlzy" > <i class="menu-icon fa fa-list"></i> <span class="menu-text" style="color: #266cad;">
+					距离最优 </span>
+		</a></li>
+
+		<li class=""><a href="backjlzy" > <i class="menu-icon fa fa-pencil-square-o"></i> <span class="menu-text">
+					单价最优</span>
+		</a></li>
+	</ul>
+
+</div>
+<div class="main-content" style="z-index: -1;">
+	<div class="page-content" style="z-index: -1;">
+		<h4 class="blue" align="left">筛选结果</h4>
+		<div class="col-xs-12" style="margin-bottom: 10px">
+			<div class="col-xs-7">
+				<form class="custom-entity-search" action="$currentUrl" method="GET">
+					<div class="row">
+						<div class="col-xs-6">
+							<input style="height: 28px; width: 100%" type="search" placeholder="搜索">
+						</div>
+						<div class="col-xs-5">
+							<a href="#" class="btn btn-white btn-inverse btn-sm"> <i class="glyphicon glyphicon-search"></i>&nbsp;搜索
+							</a> <a href="#" class="btn btn-white btn-inverse btn-sm" onclick="advanceSearch();return false;"> <i
+								class="glyphicon glyphicon-search"></i><span class="menu-text"> 高级搜索 </span> <b class="arrow fa fa-angle-down"></b>
+							</a>
+						</div>
+						<div class="col-xs-1">&nbsp;</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-xs-5">
+				<div style="float: right;">
+					<button class="btn btn-white btn-inverse btn-sm">
+						<i class="glyphicon glyphicon-fast-backward"></i>&nbsp;返回首页
+					</button>
+					<button class="btn btn-white btn-inverse btn-sm">
+						<i class="glyphicon glyphicon-share"></i>&nbsp;导出
+					</button>
+					<button class="btn btn-white btn-inverse btn-sm">
+						<i class="icon-remove align-top"></i>&nbsp;删除
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12" id="advanceSearch" style="display: none">
+			<form class="form-horizontal" action="ptjzh" method="get">
+				<div class="form-group">
+					<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 车长 </label>
+					<div class="col-sm-1">
+						<select class="form-control" id="name" style="height: 28px; width: 100%"><option value=""></option>
+							<option value="1">4以下</option>
+							<option value="2">4.2</option>
+							<option value="3">4.3</option>
+							<option value="4">4.5</option>
+							<option value="5">4.8</option>
+							<option value="6">5.0</option>
+							<option value="7">5.2</option>
+							<option value="8">5.8</option>
+							<option value="9">6.0</option>
+							<option value="10">6.2</option>
+							<option value="11">6.3</option>
+							<option value="12">6.5</option>
+							<option value="13">6.8</option>
+							<option value="14">7.0</option>
+							<option value="15">7.2</option>
+							<option value="16">7.4</option>
+							<option value="17">7.5</option>
+						</select>
+					</div>
+					<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 车辆类型 </label>
+					<div class="col-sm-2">
+						<select class="form-control" id="name" style="height: 28px; width: 100%"><option value=""></option>
+							<option value="1">普通</option>
+							<option value="2">半挂</option>
+							<option value="3">全挂</option>
+						</select>
+					</div>
+					<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 车厢类型 </label>
+					<div class="col-sm-2">
+						<select class="form-control" id="name" style="height: 28px; width: 100%"><option value=""></option>
+							<option value="1">板式</option>
+							<option value="2">厢式</option>
+						</select>
+					</div>
+					<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 是否拼车</label>
+					<div class="col-sm-1">
+						<select class="form-control" id="name" style="height: 28px; width: 100%"><option value=""></option>
+							<option value="1">否</option>
+							<option value="2">是</option>
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<button class="btn btn-white btn-inverse btn-sm">
+							<i class="icon-plus align-top"></i>&nbsp;确认
+						</button>
+						<button class="btn btn-white btn-inverse btn-sm">
+							<i class="icon-edit align-top"></i>&nbsp;重置
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="col-xs-12">
+			<div class="hr hr-18 hr-dotted"></div>
+			<div class="showTable">
+				<table id="vehicleTable"></table>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+
+jQuery(function($){
+    $('#vehicleTable').bootstrapTable({
+        url: 'getVehicleMsg',         //请求后台的URL（*）
+        method: 'get',                    //请求方式（*）
+        toolbar: '#toolbar',                //工具按钮用哪个容器
+        striped: true,                      //是否显示行间隔色
+        cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+        pagination: false,                   //是否显示分页（*）
+        sortable: false,                     //是否启用排序
+        sortOrder: "asc",                   //排序方式
+        sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+        pageNumber:1,                       //初始化加载第一页，默认第一页
+        pageSize: 10,                       //每页的记录行数（*）
+        pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+        search: false,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+        dataType: "json",
+        strictSearch: false,
+        showColumns: false,                  //是否显示所有的列
+        showRefresh: false,                  //是否显示刷新按钮
+        minimumCountColumns: 2,             //最少允许的列数
+        clickToSelect: true,                //是否启用点击选中行
+        //height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+        uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
+        showToggle:false,                    //是否显示详细视图和列表视图的切换按钮
+        cardView: false,                    //是否显示详细视图
+        detailView: true,                   //是否显示父子表
+        columns: [{
+            radio: true
+        }, {
+            field: 'carNumber',
+            title: '车牌号'
+        }, {
+            field: 'carMsg',
+            title: '车辆信息'
+        }, {
+            field: 'carToPlace',
+            title: '期望去向城市'
+        },{
+            field: 'carNowPlace',
+            title: '当前所在地'
+        }, {
+            field: 'carPhone',
+            title: '电话'
+        }, ],
+        
+    });
+});
+
+function advanceSearch(){
+	var advanceSearch=sessionStorage.getItem('advanceSearch');
+	if(advanceSearch=='true'){
+		$('#advanceSearch').css('display','none');
+		sessionStorage.setItem('advanceSearch',false);
+	}else{
+		$('#advanceSearch').css('display','block');
+		sessionStorage.setItem('advanceSearch',true);
+	}
+}
+</script>
+<script src="assets/js/bootstrap-table.js"></script>

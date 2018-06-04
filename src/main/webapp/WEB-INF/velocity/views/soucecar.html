@@ -1,0 +1,498 @@
+<link rel="stylesheet" href="assets/css/mqy/index.css" />
+<div class="main-content">
+			
+			<div id="myCarousel" class="carousel slide div-pic" style="left: 0px;position: relative;">
+				<!-- 轮播（Carousel）指标 -->
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				</ol>   
+				<!-- 轮播（Carousel）项目 -->
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src="assets/img/banner/615meeting.jpg" alt="Second slide">
+					</div>
+				</div>
+				<!-- 轮播（Carousel）导航 -->
+					<a class="carousel-control left" href="#myCarousel" 
+					   data-slide="prev">&lsaquo;</a>
+					<a class="carousel-control right" href="#myCarousel" 
+					   data-slide="next">&rsaquo;</a>
+			</div> 
+		
+	<div class="content-msg">
+		<div class="header smaller lighter blue" align="center"><h2>实时车源</h2></div>
+		<div class="col-xs-12" style="margin-top: 10px">
+			<div class="col-xs-7">
+				<form class="custom-entity-search" >
+					<div class="row">
+						<div class="col-xs-6">
+							<input style="height: 28px; width: 100%" type="search" placeholder="搜索">
+						</div>
+						<div class="col-xs-5">
+							<a href="#" class="btn btn-white btn-inverse btn-sm"> <i class="glyphicon glyphicon-search"></i>&nbsp;搜索
+							</a> <a href="#" class="btn btn-white btn-inverse btn-sm" onclick="advanceSearch();return false;"> <i
+								class="glyphicon glyphicon-search"></i><span class="menu-text"> 高级搜索 </span> <b class="arrow fa fa-angle-down"></b>
+							</a>
+						</div>
+						<div class="col-xs-1">&nbsp;</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-xs-5">
+				<div style="float: right;">
+					<button class="btn btn-white btn-inverse btn-sm" data-toggle="modal" data-target="#addModal">
+						<i class="glyphicon glyphicon-fast-backward"></i>&nbsp;发布车源
+					</button>
+					<button class="btn btn-white btn-inverse btn-sm">
+						<i class="glyphicon glyphicon-share"></i>&nbsp;导出
+					</button>
+					<button class="btn btn-white btn-inverse btn-sm">
+						<i class="icon-remove align-top"></i>&nbsp;删除
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xs-12" id="advanceSearch" style="display: none">
+			<form class="form-horizontal" action="ptjzh" method="get">
+				<div class="form-group">
+					<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 出发地</label>
+					<div class="col-sm-4" style="text-align: center">
+						<div style="position: relative;">
+							<input id="placeStart" name="placeStart" class="form-control" readonly type="text" value="重庆市/重庆市/沙坪坝区"
+								data-toggle="city-picker" style="width: 300px">
+						</div>
+					</div>
+					<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 目的地 </label>
+					<div class="col-sm-4" style="text-align: center">
+						<div style="position: relative;">
+							<input id="placeStart" name="placeStart" class="form-control" readonly type="text" value="重庆市/重庆市/沙坪坝区"
+								data-toggle="city-picker" style="width: 300px">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 装车时间 </label>
+					<div class="col-sm-3">
+						<div class="input-group">
+							<input class="form-control date-picker" id="startTime" name="startTime" type="text" data-date-format="yyyy-mm-dd"> <span
+								class="input-group-addon"> <i class="fa fa-calendar bigger-110"></i>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 车长</label>
+					<div class="col-sm-1">
+						<select class="form-control" id="name" style="height: 28px; width: 100%"><option value=""></option>
+							<option value="1">否</option>
+							<option value="2">是</option>
+						</select>
+					</div>
+					<label class="col-sm-1 control-label" for="form-field-1"><font color="red">*</font> 车类型</label>
+					<div class="col-sm-2">
+						<select id="type" name="type" class="width-100"><option value=""></option>
+							<option>普通</option>
+							<option>半挂</option>
+							<option>全挂</option></select>
+					</div>
+					<label class="col-sm-1 control-label" for="form-field-1"> 车厢类型</label>
+					<div class="col-sm-2">
+						<select id="carriage" name="carriage" class="width-100"><option></option>
+							<option>栏板式</option>
+							<option>厢式</option>
+							<option>其他</option></select>
+					</div>
+					<div class="col-sm-1"></div>
+					<div class="col-sm-2">
+						<button class="btn btn-white btn-inverse btn-sm">
+							<i class="icon-plus align-top"></i>&nbsp;确认
+						</button>
+						<button class="btn btn-white btn-inverse btn-sm">
+							<i class="icon-edit align-top"></i>&nbsp;重置
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		<div class="main-cont col-xs-12">
+		<div class="hr"></div>
+		<div class="cont" style="height: auto;">
+			<div class="cont1-info">
+				<div class="cont1-info-title">
+					<div class="info-title1 col-xs-2 lighter">车主信息</div>
+					<div class="info-title1 col-xs-2 lighter">车辆信息</div>
+					<div class="info-title1 col-xs-2 lighter">目前所在地</div>
+					<div class="info-title1 col-xs-2 lighter">期望目的地</div>
+					<div class="info-title1 col-xs-2 lighter">手机号</div>
+					<div class="info-title1 col-xs-2 lighter">操作</div>
+				</div>
+				<div class="cont1-info-lift" id="cont1-info-lift">
+					
+				</div>									
+			</div>
+		</div>
+		</div></div>	
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" style="width: 1000px; height: 450px">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">订单信息</h4>
+			</div>
+			<div class="modal-body" style="height: 400px; text-align: right">
+				<div class="row">
+					<ul class="steps">
+						<li data-step="1" class="active"><span class="step">1</span> <span class="title">接单</span></li>
+
+						<li data-step="2"><span class="step">2</span> <span class="title">确认合同/开始运输</span></li>
+
+						<li data-step="3"><span class="step">3</span> <span class="title">评价</span></li>
+
+						<li data-step="4"><span class="step">4</span> <span class="title">交易完成</span></li>
+					</ul>
+				</div>
+				<br>
+				<div class="hr hr13 dotted"></div>
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="col-xs-4" align="left">
+							<label id="id" style="display: none"></label>
+							<div class="row">
+								<div style="float: left">
+									<span class="profile-picture"> <img id="avatar" class="editable img-responsive editable-click editable-empty"
+										alt="Alex's Avatar" src="assets/avatars/profile-pic.jpg" style="width: 70px;height:70px;"></img>
+									</span>
+								</div>
+								<div style="float: left">
+									<div>&nbsp;&nbsp;<span id="name"></span></div>
+									<div>
+										&nbsp;&nbsp;<span id="carNumber"></span>
+									</div>
+									<div>
+										&nbsp;&nbsp;<span id="carPhone"></span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<span class="badge badge-info">起：</span>&nbsp;<span id="carNowPlace">sdf</span>
+							</div>
+							<div class="row">
+								<span class="badge badge-danger">终：</span>&nbsp;<span id="carToPlace">sdf</span>
+							</div>
+							<div class="hr hr13 dotted"></div>
+							<div class="row">
+								货物描述:<ul id="carMsg"></ul>
+							</div>
+						</div>
+
+						<div class="col-xs-4" align="center">
+							<div>
+								<label class="control-label" for="form-field-1"><font color="red">提醒：如对方索取信息费，请谨慎交易！ </font></label>
+							</div>
+							<div>
+								<label class="control-label" for="form-field-1"><font color="red">须知：发货人认证信息不完整，请知悉！</font></label>
+							</div>
+							<br>
+							<div>
+								<label class=" control-label" for="form-field-1">身份证、营业执照、名片照、门头照！</label>
+							</div>
+							<br>
+							<br>
+							<div>
+								<label class=" control-label no-padding-right" for="form-field-1"> 报价</label> <input type="text" id="money" name="money"
+									placeholder="金额">
+							</div>
+							<br>
+							<br>
+							<div>
+								<button onclick="taking()" class="btn btn-primary" style="width: 100px">接 单</button>
+							</div>
+						</div>
+						<div class="col-xs-4">
+							<div class="alert alert-info" style="height: 250px;" align="left">
+								<div>1、为确保您的权益得到保障，建议选择资质已认证的发货人</div>
+								<br>
+								<br>
+								<div>2、为保障您的运费资金安全，欢迎使用平台在线支付运费。</div>
+								<br>
+								<br>
+								<div align="center">支付使用问题与投诉请致电</div>
+								<div align="center">400-996-2888</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
+</div>
+
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" style="width: 1000px; height: 230px">
+		<div class="modal-content">
+			<form class="form-horizontal" action="addCarMsg" method='post' style="background-color: #ffffff;">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">发布车源</h4>
+				</div>
+				<div class="modal-body col-xs-12" style="height: 230px; text-align: right">
+					<div class="form-group">
+						<label class="col-sm-1 control-label no-padding-right" for="form-field-1"><font color="red">*</font> 车类型</label>
+						<div class="col-sm-2">
+							<select id="type" name="type" class="width-100"><option value="0">---  车类型  ---</option>
+								<option value="1">普通</option>
+								<option value="2">半挂</option>
+								<option value="3">全挂</option></select>
+						</div>
+						<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 车厢类型</label>
+						<div class="col-sm-2">
+							<select id="carriage" name="carriage" class="width-100"><option value="0">---  车厢类型  ---</option>
+								<option value="1">栏板式</option>
+								<option value="2">厢式</option>
+								<option value="3">其他</option></select>
+						</div>
+						<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 车牌号</label>
+						<div class="col-sm-2">
+							<input type="text" id="carNumber" name="carNumber" placeholder="车牌号">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1 control-label no-padding-right" for="form-field-1"><font color="red">*</font> 出发地</label>
+						<div class="col-sm-4" style="text-align: center">
+							<div style="position: relative;">
+								<input id="placeStart" name="placeStart" class="form-control" readonly type="text" value="重庆市/重庆市/沙坪坝区"
+									data-toggle="city-picker" style="width: 300px">
+							</div>
+						</div>
+						<label class="col-sm-2 control-label no-padding-right" for="form-field-1"><font color="red">*</font> 目的地</label>
+						<div class="col-sm-4" style="text-align: center">
+							<div style="position: relative;">
+								<input id="placeArrive" name="placeArrive" class="form-control" readonly type="text" value="重庆市/重庆市/沙坪坝区"
+									data-toggle="city-picker" style="width: 300px">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1 control-label no-padding-right" for="form-field-1">出发时间 </label>
+						<div class="col-sm-4">
+							<div class="input-group">
+								<span style="position: relative; z-index: 9999;"> <input class="form-control date-picker" id="startTime"
+									name="startTime" type="text" data-date-format="yyyy-mm-dd"> 
+								</span>
+								<span class="input-group-addon"> <i
+										class="fa fa-calendar bigger-110"></i>
+								</span>
+							</div>
+						</div>
+						<label class="col-sm-2 control-label no-padding-right" for="form-field-1">到达时间 </label>
+						<div class="col-sm-4">
+							<div class="input-group">
+								<span style="position: relative; z-index: 9999;"> <input class="form-control date-picker" id="arriveTime"
+									name="arriveTime" type="text" data-date-format="yyyy-mm-dd"> 
+								</span>
+								<span class="input-group-addon"> <i
+										class="fa fa-calendar bigger-110"></i>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1 control-label no-padding-right" for="form-field-1"><font color="red">*</font> 车辆描述 </label>
+						<div class="col-sm-4">
+							<div class="input-group width-40" style="float: left"><input type="text" id="carLength" name="carLength" placeholder="车长"  class="form-control"><span class="input-group-addon" >米</span></div>
+							<div class="input-group width-30" style="float: left"> <input	type="text" id="carWidth" name="carWidth" placeholder="车宽" class="form-control"> <span class="input-group-addon" >米</span></div>
+							<div class="input-group width-30" style="float: left"><input type="text" id="carHeigth" name="carHeigth" placeholder="车高"  class="form-control"><span class="input-group-addon" >米</span></div>
+						</div>
+						<label class="col-sm-2 control-label no-padding-right" for="form-field-1"><font color="red">*</font> 体量描述 </label>
+						<div class="col-sm-4">
+							<div class="input-group width-30" style="float: left"><input type="text" id="weight" name="weight" placeholder="重量" class="form-control"><span class="input-group-addon" >吨</span></div>
+							<div class="input-group width-40" style="float: left"><input type="text" id="volumn" name="volumn" placeholder="体积 " class="form-control"><span class="input-group-addon" >立方米</span></div>
+							<div class="input-group width-30" style="float: left"><input type="text" id="carCount" name="carCount" placeholder="数量 " class="form-control"><span class="input-group-addon" >辆</span></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">发布</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div>
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal -->
+</div>
+
+<script type="text/javascript">
+
+window.onload = function() {
+	
+	$.get("getVehicleMsg",function(data,status){
+		var data = data.data;
+		var length =data.length;
+		var list = document.getElementById("cont1-info-lift");
+		for(var i=0;i<length;i++){
+			var divSpace = document.createElement("div");
+			divSpace.style.cssText="height:2px";
+			list.appendChild(divSpace);
+			var ul = document.createElement("ul");
+			ul.className="car-list";
+			var li1=document.createElement("li");
+			li1.className ="col-xs-2";
+			var dl =document.createElement("dl");
+			var dt = document.createElement("dt");
+			dt.style.cssText="float: left";
+			var img = document.createElement("img");
+			img.src="assets/img/car/20589830_27.jpg";
+			img.width="70";
+			img.height="70";
+			dt.appendChild(img);
+			var dd =document.createElement("dd");
+			dd.style.cssText="float:left";
+			var ddul=document.createElement("dt");
+			ddul.style.cssText="float:none";
+			// 信息 
+			var p = document.createElement("dd");
+			p.innerHTML=data[i].carOwnerName;
+			var p2=document.createElement("dd");
+			p2.innerHTML="车主";
+			
+			var p3=document.createElement("dd");
+			// 信息 
+			p3.innerHTML=data[i].carNumber;
+			
+			var p4=document.createElement("dd");
+			// 信息 
+			p4.innerHTML=data[i].registerDate;
+			
+			ddul.appendChild(p);
+			ddul.appendChild(p2);
+			ddul.appendChild(p3);
+			ddul.appendChild(p4);
+			dd.appendChild(ddul);
+			
+			li1.appendChild(dt);
+			li1.appendChild(dd);
+			
+			var li2=document.createElement("li");
+			li2.className ="col-xs-2";
+			var p=document.createElement("p");
+			p.innerHTML=data[i].carType;
+			li2.appendChild(p);
+			var p=document.createElement("p");
+			p.innerHTML=data[i].maxWeight;
+			li2.appendChild(p);
+			var p=document.createElement("p");
+			p.innerHTML=data[i].lwh;
+			li2.appendChild(p);
+			var li3=document.createElement("li");
+			li3.className ="col-xs-2";
+			var p=document.createElement("p");
+			p.innerHTML=" ";
+			li3.appendChild(p);
+			var p=document.createElement("p");
+			p.innerHTML=data[i].startPlace;
+			li3.appendChild(p);
+			var li4=document.createElement("li");
+			li4.className ="col-xs-2";
+			var p=document.createElement("p");
+			p.innerHTML="   ";
+			li4.appendChild(p);
+			var p=document.createElement("p");
+			p.innerHTML=data[i].destination;
+			li4.appendChild(p);
+			var li5=document.createElement("li");
+			li5.className ="col-xs-2";
+			var p=document.createElement("p");
+			p.innerHTML="   ";
+			li5.appendChild(p);
+			var p=document.createElement("p");
+			p.innerHTML=data[i].phone;
+			li5.appendChild(p);
+			var li6=document.createElement("li");
+			li6.className ="col-xs-2";
+			var p=document.createElement("p");
+			p.innerHTML="  ";
+			li6.appendChild(p);
+			var b=document.createElement("button");
+			b.className="btn btn-sm btn-primary";
+			b.innerHTML="预约";
+			b.style.cssText="width:80px;height:30px"
+			var id = data[i].id;
+			var carNumber=data[i].carNumber; var name =data[i].carOwnerName;
+			var phone=data[i].phone;var startPlace=data[i].startPlace;var destination= data[i].destination;
+			var type=data[i].carType;var maxWeight=data[i].maxWeight;
+			var lwh=data[i].lwh;
+			b.setAttribute("onclick","showModalMsg("+id+",'"+carNumber+"','"+phone+"','"+startPlace+"','"+destination+"','"+maxWeight+"','"+type+"','"+lwh+"','"+name+"')");
+			li6.appendChild(b);
+			
+			ul.appendChild(li1);
+			ul.appendChild(li2);
+			ul.appendChild(li3);
+			ul.appendChild(li4);
+			ul.appendChild(li5);
+			ul.appendChild(li6);
+			ul.onmouseover=function (){
+				this.style.background='#F0FFF0';
+			}
+			ul.onmouseout=function(){
+				this.style.background='';
+			}
+			list.appendChild(ul);
+		}
+	});
+}
+
+function showModalMsg(id,carNumber,phone,startPlace,destination,maxWeight,type,lwh,name){
+	console.log("helo");
+	$('#myModal #id').html(id);$('#myModal #name').html(name);
+    $('#myModal #carNumber').html(carNumber);
+    $('#myModal #carPhone').html(phone);
+    $('#myModal #carNowPlace').html(startPlace);
+    $('#myModal #carToPlace').html(destination);
+    $('#myModal #carMsg').find("li").remove();
+    var carMsg = document.getElementById("carMsg");
+    var p=document.createElement("li");
+    p.innerHTML=type;
+    console.log(type);
+    carMsg.appendChild(p);
+    var p=document.createElement("li");
+    p.innerHTML=maxWeight;
+    carMsg.appendChild(p);
+    var p=document.createElement("li");
+    p.innerHTML=lwh;
+    carMsg.appendChild(p);
+    $('#myModal').modal('show');
+}
+
+function advanceSearch(){
+	var advanceSearch=sessionStorage.getItem('advanceSearch');
+	if(advanceSearch=='true'){
+		$('#advanceSearch').css('display','none');
+		sessionStorage.setItem('advanceSearch',false);
+	}else{
+		$('#advanceSearch').css('display','block');
+		sessionStorage.setItem('advanceSearch',true);
+	}
+}
+
+jQuery(function($) {
+	$('.date-picker').datepicker({
+		autoclose: true,
+		todayHighlight: true
+	}).next().on(ace.click_event, function(){
+		$(this).prev().focus();
+	});
+});
+
+</script>

@@ -1,0 +1,48 @@
+.cont1-info-title{
+	height: 30px;
+}
+.info-title1{
+	font-size:18px;
+	color: #4c4c4c;
+	text-align: center;
+	line-height: 20px;
+	border-right:1px solid #cacaca;
+}
+.cont1-info{
+	padding:10px 0;
+}
+.car-list{
+	border-bottom: 1px solid #c0c0c0;
+	height: 85px;
+}
+.car-list ul{
+	list-style: none;
+}
+.car-list li{
+	float: left;
+	list-style: none;
+	text-align: center;
+	vertical-align: middle;
+}
+.cont1-info-lift{
+	border-top: 1px solid #cacaca;
+}
+
+.div-pic{
+	 position:relative; width:auto; height:375px;
+}
+.div-form{
+	width:649px; height:auto;
+	left: 50%;
+	margin-left: -600px;
+	position: absolute;
+	margin-top: 48px;
+	z-index: 99;
+}
+.topMenu{
+	border-color: white;
+}
+.content-msg{
+	position: relative;width: 1200px;margin-left:auto;margin-right:auto;
+	height: auto;
+}

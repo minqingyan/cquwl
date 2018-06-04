@@ -1,0 +1,436 @@
+<link rel="stylesheet" href="assets/css/ul.css" />
+<link rel="stylesheet" href="assets/css/mqy/indexback.css" />
+#parse("layout/partials/leftnav.html")
+<div class="main-content person-center">
+	<div>
+		<div class="breadcrumbs" id="breadcrumbs">
+			<script type="text/javascript">
+				try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+			</script>
+			<ul class = "breadcrumb">
+				<li><a href="#">我的发布</a></li>
+				<li class="active">货源</li>
+			</ul>
+		</div>
+	</div>
+	<div class="page-content">
+		<!-- /.page-header -->
+		<div class="col-xs-12">
+			<div class="row">
+
+				<div class="tabbable">
+					<ul class="nav nav-tabs padding-12 tab-color-blue background-blue" id="myTab">
+						<li class="active" style="width: 50%;text-align: center;font:bolder;font-size: large;">
+						<a data-toggle="tab" href="#home" aria-expanded="true" onclick="getMyCarGoodMsg()"> 
+						<i class="fa fa-truck" aria-hidden="true"></i> 已发布车货源
+						</a></li>
+
+						<li class="" style="width: 50%;text-align: center;font:bolder;font-size: large;">
+						<a data-toggle="tab" href="#messages" aria-expanded="false" onclick="getMyStoreGoodMsg()">
+						<i class="fa fa-cubes" aria-hidden="true"></i> 已发布仓库货源 </a></li>
+					</ul>
+
+					<div class="tab-content">
+						<div id="messages" class="tab-pane fade active in">
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="main-cont col-xs-12">
+									<div class="cont" style="height: auto;min-height:640px">
+										<div class="cont1-info">
+											<div class="cont1-info-title">
+												<div class="info-title1 col-xs-2 lighter">货主信息</div>
+												<div class="info-title1 col-xs-2 lighter">货物描述</div>
+												<div class="info-title1 col-xs-2 lighter">仓库地点</div>
+												<div class="info-title1 col-xs-2 lighter">仓库时间</div>
+												<div class="info-title1 col-xs-2 lighter">发布时间</div>
+												<div class="info-title1 col-xs-2 lighter">操作</div>
+											</div>
+											<div class="cont1-info-lift-store" id="cont1-info-lift-store">
+												
+											</div>									
+										</div>
+									</div>
+								</div>
+								</div>
+							</div>
+						</div>
+						<!-- home -->
+
+						<div id="home" class="tab-pane fade">
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="main-cont col-xs-12">
+									<div class="cont" style="height: auto;">
+										<div class="cont1-info">
+											<div class="cont1-info-title">
+												<div class="info-title1 col-xs-2 lighter">货主信息</div>
+												<div class="info-title1 col-xs-2 lighter">货物描述</div>
+												<div class="info-title1 col-xs-3 lighter">运输路线</div>
+												<div class="info-title1 col-xs-3 lighter">期望装卸时间</div>
+												<div class="info-title1 col-xs-1 lighter">发布时间</div>
+												<div class="info-title1 col-xs-1 lighter">操作</div>
+											</div>
+											<div class="cont1-info-lift" id="cont1-info-lift">
+												
+											</div>									
+										</div>
+									</div>
+								</div>
+								</div>
+							</div>
+						</div>
+						<!-- messages -->
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form action="deleteGood" method = "post">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">提示</h4>
+				</div>
+				<div class="modal-body" style="height: 250px;" style="vertical-align: middle; " align="center" >
+					<input name="flag" id="flag" style="visibility: hidden;"/>
+					<input name="id" id="id" style="visibility: hidden;"/>
+					<h3><b>静等期待！</b></h3>
+				</div>
+				<!-- /.modal-content -->
+				<div class="modal-footer"> 
+	            	<button class="btn btn-success" type="button">确定</button> 
+	            	<a href="#" class="btn" data-dismiss="modal">下次再说</a> 
+	        	</div> 
+        	</form>
+		</div>
+		<!-- /.modal -->
+	</div>
+</div>
+
+
+<div class="modal fade" id="del" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form action="deleteGood" method = "post">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">提示</h4>
+				</div>
+				<div class="modal-body" style="height: 250px;" style="vertical-align: middle; " align="center" >
+					<input name="flag" id="flag" style="visibility: hidden;"/>
+					<input name="id" id="id" style="visibility: hidden;"/>
+					<h3><b>是否确认删除我的货物?</b></h3>
+				</div>
+				<!-- /.modal-content -->
+				<div class="modal-footer"> 
+	            	<button class="btn btn-success" type="button">确定</button> 
+	            	<a href="#" class="btn" data-dismiss="modal">下次再说</a> 
+	        	</div> 
+        	</form>
+		</div>
+		<!-- /.modal -->
+	</div>
+</div>
+<script>
+function getMyStoreGoodMsg(){
+	$.get("getMyStoreGoodsMsg",function(data,status){
+		var data = data.data;
+		var length =data.length;
+		var list = document.getElementById("cont1-info-lift-store");
+		list.innerHTML="";
+		for(var i=0;i<length;i++){
+			var divSpace = document.createElement("div");
+			divSpace.style.cssText="height:2px";
+			list.appendChild(divSpace);
+			var ul = document.createElement("ul");
+			ul.className="car-list";
+			var li1=document.createElement("li");
+			li1.className ="col-xs-2";
+			var dl =document.createElement("dl");
+			var dt = document.createElement("dt");
+			dt.style.cssText="float: left";
+			var img = document.createElement("img");
+			img.src=data[i].img;
+			img.width="70";
+			img.height="70";
+			dt.appendChild(img);
+			var dd =document.createElement("dd");
+			dd.style.cssText="float:left";
+			var ddul=document.createElement("dt");
+			ddul.style.cssText="float:none";
+			// 信息 
+			var p = document.createElement("dd");
+			p.innerHTML=data[i].goodOwnerName;
+			var p2=document.createElement("dd");
+			p2.innerHTML="货主";
+			
+			var p4=document.createElement("dd");
+			// 信息 
+			p4.innerHTML=data[i].registerDate;
+			
+			ddul.appendChild(p);
+			ddul.appendChild(p2);
+			ddul.appendChild(p4);
+			dd.appendChild(ddul);
+			
+			li1.appendChild(dt);
+			li1.appendChild(dd);
+			
+			var li2=document.createElement("li");
+			li2.className ="col-xs-2";
+			var p=document.createElement("dd");
+			p.innerHTML=data[i].type;
+			li2.appendChild(p);
+			var p=document.createElement("dd");
+			p.innerHTML=data[i].totalMsg;
+			li2.appendChild(p);
+			var p=document.createElement("dd");
+			p.innerHTML=data[i].unitMsg;
+			li2.appendChild(p);
+			var li3=document.createElement("li");
+			li3.className ="col-xs-2";
+			
+			var div1 = document.createElement("div");
+			var span1 = document.createElement("span");
+			span1.className = "badge badge-info";
+			span1.innerHTML="";
+			var spanmsg = document.createElement("span");
+			spanmsg.innerHTML=data[i].startPlace;
+			div1.appendChild(span1);
+			div1.appendChild(spanmsg);
+			
+			li3.appendChild(div1);
+			
+			/*var p=document.createElement("p");
+			p.innerHTML=data[i].startPlace;
+			li3.appendChild(p);
+			var p=document.createElement("p");
+			p.innerHTML=data[i].destination;
+			li3.appendChild(p);*/
+			
+			var li4=document.createElement("li");
+			li4.className ="col-xs-2";
+			var p=document.createElement("p");
+			p.innerHTML=data[i].deliveryTime;
+			li4.appendChild(p);
+			var p=document.createElement("p");
+			p.innerHTML=data[i].unloadTime;
+			li4.appendChild(p);
+			var li5=document.createElement("li");
+			li5.className ="col-xs-2";
+			var p=document.createElement("p");
+			p.innerHTML="   ";
+			li5.appendChild(p);
+			var p=document.createElement("p");
+			p.innerHTML=data[i].publishTime;
+			li5.appendChild(p);
+			var li6=document.createElement("li");
+			li6.className ="col-xs-2";
+			
+			var p=document.createElement("p");
+			p.innerHTML="  ";
+			li6.appendChild(p);
+			
+			var a = document.createElement("a");
+			a.innerHTML = "修改";
+			a.setAttribute("onclick","modify('"+id+"')");
+			li6.appendChild(a);
+			var label = document.createElement("label");
+			label.innerHTML = "|";
+			li6.appendChild(label);
+			var a = document.createElement("a");
+			a.innerHTML = "删除";
+			a.setAttribute("onclick","del(1,'"+id+"')");
+			li6.appendChild(a);
+			
+			var id = data[i].id;var name=data[i].goodOwnerName;var img=data[i].img;
+			var registerDate=data[i].registerDate;
+			var phone=data[i].phone;var startPlace=data[i].startPlace;var destination= data[i].destination;
+			var type=data[i].type;var totalMsg=data[i].totalMsg;var unitMsg=data[i].unitMsg;var publishTime=data[i].publishTime;
+			var deliveryTime=data[i].deliveryTime;var unloadTime=data[i].unloadTime;var carNumber = data[i].carNumber;var maxWeight=data[i].maxWeight;
+			var lwh=data[i].lwh; 
+			
+			ul.appendChild(li1);
+			ul.appendChild(li2);
+			ul.appendChild(li3);
+			ul.appendChild(li4);
+			ul.appendChild(li5);
+			ul.appendChild(li6);
+			
+			ul.onmouseover=function (){
+				this.style.background='#F0FFF0';
+			}
+			ul.onmouseout=function(){
+				this.style.background='';
+			}
+			list.appendChild(ul);
+		}
+	});
+}
+
+function modify(flag,id){
+	$('#update').modal('show');
+}
+
+function del(flag,id){
+	$('#del #flag').val(flag);
+	$('#del #id').val(id);
+	$('#del').modal('show');
+}
+
+jQuery(document).ready(function(){
+	getMyCarGoodMsg();
+	$('[data-rel=tooltip]').tooltip({container:'body'});
+	$('[data-rel=popover]').popover({container:'body'});
+	
+});
+
+function getMyCarGoodMsg() {
+	
+	$.get("getMyCarGoodsMsg",function(data,status){
+		var data = data.data;
+		var length =data.length;
+		var list = document.getElementById("cont1-info-lift");
+		list.innerHTML="";
+		for(var i=0;i<length;i++){
+			var divSpace = document.createElement("div");
+			divSpace.style.cssText="height:2px";
+			list.appendChild(divSpace);
+			var ul = document.createElement("ul");
+			ul.className="car-list";
+			var li1=document.createElement("li");
+			li1.className ="col-xs-2";
+			var dl =document.createElement("dl");
+			var dt = document.createElement("dt");
+			dt.style.cssText="float: left";
+			var img = document.createElement("img");
+			img.src=data[i].img;
+			img.width="70";
+			img.height="70";
+			dt.appendChild(img);
+			var dd =document.createElement("dd");
+			dd.style.cssText="float:left";
+			var ddul=document.createElement("dt");
+			ddul.style.cssText="float:none";
+			// 信息 
+			var p = document.createElement("dd");
+			p.innerHTML=data[i].goodOwnerName;
+			var p2=document.createElement("dd");
+			p2.innerHTML="货主";
+			
+			var p4=document.createElement("dd");
+			// 信息 
+			p4.innerHTML=data[i].registerDate;
+			
+			ddul.appendChild(p);
+			ddul.appendChild(p2);
+			ddul.appendChild(p4);
+			dd.appendChild(ddul);
+			
+			li1.appendChild(dt);
+			li1.appendChild(dd);
+			
+			var li2=document.createElement("li");
+			li2.className ="col-xs-2";
+			var p=document.createElement("dd");
+			p.innerHTML=data[i].type;
+			li2.appendChild(p);
+			var p=document.createElement("dd");
+			p.innerHTML=data[i].totalMsg;
+			li2.appendChild(p);
+			var p=document.createElement("dd");
+			p.innerHTML=data[i].unitMsg;
+			li2.appendChild(p);
+			var li3=document.createElement("li");
+			li3.className ="col-xs-3";
+			
+			var div1 = document.createElement("div");
+			var span1 = document.createElement("span");
+			span1.className = "badge badge-info";
+			span1.innerHTML="起:";
+			var spanmsg = document.createElement("span");
+			spanmsg.innerHTML=data[i].startPlace;
+			div1.appendChild(span1);
+			div1.appendChild(spanmsg);
+			
+			var div2 = document.createElement("div");
+			var span1 = document.createElement("span");
+			span1.className = "badge badge-danger";
+			span1.innerHTML="终:";
+			var spanmsg = document.createElement("span");
+			spanmsg.innerHTML=data[i].destination;
+			div2.appendChild(span1);
+			div2.appendChild(spanmsg);
+			
+			li3.appendChild(div1);
+			li3.appendChild(div2);
+			
+			/*var p=document.createElement("p");
+			p.innerHTML=data[i].startPlace;
+			li3.appendChild(p);
+			var p=document.createElement("p");
+			p.innerHTML=data[i].destination;
+			li3.appendChild(p);*/
+			
+			var li4=document.createElement("li");
+			li4.className ="col-xs-3";
+			var p=document.createElement("p");
+			p.innerHTML=data[i].deliveryTime;
+			li4.appendChild(p);
+			var p=document.createElement("p");
+			p.innerHTML=data[i].unloadTime;
+			li4.appendChild(p);
+			var li5=document.createElement("li");
+			li5.className ="col-xs-1";
+			var p=document.createElement("p");
+			p.innerHTML="   ";
+			li5.appendChild(p);
+			var p=document.createElement("p");
+			p.innerHTML=data[i].publishTime;
+			li5.appendChild(p);
+			var li6=document.createElement("li");
+			li6.className ="col-xs-1";
+			var p=document.createElement("p");
+			p.innerHTML="  ";
+			li6.appendChild(p);
+			var carNumber=data[i].carNumber; var name = data[i].carOwnerName;var id = data[i].id;var name =data[i].goodOwnerName
+			var phone=data[i].phone;var startPlace=data[i].startPlace;var destination= data[i].destination;
+			var type=data[i].type;var unitMsg=data[i].unitMsg;var unloadTime = data[i].unloadTime;var deliveryTime = data[i].deliveryTime;
+			var registerDate=data[i].registerDate;var totalMsg = data[i].totalMsg; var publishTime = data[i].publishTime;
+		//	b.setAttribute("onclick","showModalCarMsg("+id+",'"+name+"','"+phone+"','"+startPlace+"','"+destination+"','"+publishTime+"','"+type+"','"+registerDate+"','"+unloadTime+"','"+totalMsg+"','"+unitMsg+"','"+deliveryTime+"')");
+			console.log(data[i]);
+
+			var ad = document.createElement("a");
+			ad.innerHTML = "修改";
+			ad.setAttribute("onclick","modify('"+id+"')");
+			li6.appendChild(ad);
+			var label = document.createElement("label");
+			label.innerHTML = "|";
+			li6.appendChild(label);
+			var a = document.createElement("a");
+			a.innerHTML = "删除";
+			a.setAttribute("onclick","del(2,'"+id+"')");
+			li6.appendChild(a);
+			
+			ul.appendChild(li1);
+			ul.appendChild(li2);
+			ul.appendChild(li3);
+			ul.appendChild(li4);
+			ul.appendChild(li5);
+			ul.appendChild(li6);
+			
+			ul.onmouseover=function (){
+				this.style.background='#F0FFF0';
+			}
+			ul.onmouseout=function(){
+				this.style.background='';
+			}
+			list.appendChild(ul);
+		}
+	});
+}
+</script>

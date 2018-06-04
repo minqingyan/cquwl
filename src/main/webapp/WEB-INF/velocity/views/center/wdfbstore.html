@@ -1,0 +1,203 @@
+<link rel="stylesheet" href="assets/css/ul.css" />
+<link rel="stylesheet" href="assets/css/mqy/indexback.css" />
+#parse("layout/partials/leftnav.html")
+<div class="main-content person-center">
+	<div>
+		<div class="breadcrumbs" id="breadcrumbs">
+			<script type="text/javascript">
+				try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+			</script>
+			<ul class = "breadcrumb">
+				<li><a href="#">我的发布</a></li>
+				<li class="active">仓库源</li>
+			</ul>
+		</div>
+	</div>
+	<div class="page-content">
+		<!-- /.page-header -->
+		<div class="cont" style="height: auto;">
+		<div class="cont1-info">
+			<div class="cont1-info-title">
+				<div class="info-title1 col-xs-2 lighter">仓库主信息</div>
+				<div class="info-title1 col-xs-3 lighter">仓库信息</div>
+				<div class="info-title1 col-xs-2 lighter">仓库所在地</div>
+				<div class="info-title1 col-xs-2 lighter">仓库时间</div>
+				<div class="info-title1 col-xs-1 lighter">手机号</div>
+				<div class="info-title1 col-xs-2 lighter">操作</div>
+			</div>
+			<div class="cont1-info-lift-store" id="cont1-info-lift-store">
+			</div>									
+		</div>
+	</div>
+	</div>
+</div>
+
+<div class="modal fade" id="del" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form action="deleteGood" method = "post">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">提示</h4>
+				</div>
+				<div class="modal-body" style="height: 250px;" style="vertical-align: middle; " align="center" >
+					<input name="flag" id="flag" style="visibility: hidden;"/>
+					<input name="id" id="id" style="visibility: hidden;"/>
+					<h3><b>是否确认删除我的仓库?</b></h3>
+				</div>
+				<!-- /.modal-content -->
+				<div class="modal-footer"> 
+	            	<button class="btn btn-success" type="button">确定</button> 
+	            	<a href="#" class="btn" data-dismiss="modal">下次再说</a> 
+	        	</div> 
+        	</form>
+		</div>
+		<!-- /.modal -->
+	</div>
+</div>
+<script>
+window.onload = function() {
+	$('[data-rel=tooltip]').tooltip({container:'body'});
+	$('[data-rel=popover]').popover({container:'body'});
+		$.get("getStoreMsg",function(data,status){
+			var data = data.data;
+			var length =data.length;
+			var list = document.getElementById("cont1-info-lift-store");
+			list.innerHTML="";
+			for(var i=0;i<length;i++){
+				var divSpace = document.createElement("div");
+				divSpace.style.cssText="height:2px";
+				list.appendChild(divSpace);
+				var ul = document.createElement("ul");
+				ul.className="car-list";
+				var li1=document.createElement("li");
+				li1.className ="col-xs-2";
+				var dl =document.createElement("dl");
+				var dt = document.createElement("dt");
+				dt.style.cssText="float: left";
+				var img = document.createElement("img");
+				img.src="assets/img/person/up_img01.jpg";
+				img.width="70";
+				img.height="70";
+				dt.appendChild(img);
+				var dd =document.createElement("dd");
+				dd.style.cssText="float:left";
+				var ddul=document.createElement("dt");
+				ddul.style.cssText="float:none";
+				// 信息 
+				var p = document.createElement("dd");
+				p.innerHTML=data[i].userName;
+				var p2=document.createElement("dd");
+				p2.innerHTML="仓库主";
+				
+				var p3=document.createElement("dd");
+				// 信息 
+				p3.innerHTML=data[i].registerDate;
+				
+				ddul.appendChild(p);
+				ddul.appendChild(p2);
+				ddul.appendChild(p3);
+				dd.appendChild(ddul);
+				
+				li1.appendChild(dt);
+				li1.appendChild(dd);
+				var id = data[i].id;
+				li1.setAttribute("onmouseover","ShowInfo("+id+")");
+				//li1.onmouseover=function(){
+				//	ShowInfo();
+				//};
+				li1.setAttribute("onmouseout","HiddenInfo()")
+				//li1.onmouseout=function(){
+				//	HiddenInfo();
+				//};
+				
+				var li2=document.createElement("li");
+				li2.className ="col-xs-3";
+				var p=document.createElement("p");
+				p.innerHTML=data[i].storeName;
+				li2.appendChild(p);
+				var p=document.createElement("p");
+				p.innerHTML=data[i].type;
+				li2.appendChild(p);
+				var p=document.createElement("p");
+				p.innerHTML=data[i].storeCover;
+				li2.appendChild(p);
+				var li3=document.createElement("li");
+				li3.className ="col-xs-2";
+				var p=document.createElement("p");
+				p.innerHTML=" ";
+				li3.appendChild(p);
+				var p=document.createElement("p");
+				p.innerHTML=data[i].storePlace;
+				li3.appendChild(p);
+				var li4=document.createElement("li");
+				li4.className ="col-xs-2";
+				var p=document.createElement("p");
+				p.innerHTML="   ";
+				li4.appendChild(p);
+				var p=document.createElement("p");
+				p.innerHTML=data[i].storeDate;
+				li4.appendChild(p);
+				var li5=document.createElement("li");
+				li5.className ="col-xs-1";
+				var p=document.createElement("p");
+				p.innerHTML="   ";
+				li5.appendChild(p);
+				var p=document.createElement("p");
+				p.innerHTML=data[i].phone;
+				li5.appendChild(p);
+				var li6=document.createElement("li");
+				li6.className ="col-xs-2";
+				var p=document.createElement("p");
+				p.innerHTML="  ";
+				li6.appendChild(p);
+
+				var a = document.createElement("a");
+				a.innerHTML = "修改";
+				a.setAttribute("onclick","modify('"+id+"')");
+				li6.appendChild(a);
+				var label = document.createElement("label");
+				label.innerHTML = "|";
+				li6.appendChild(label);
+				var a = document.createElement("a");
+				a.innerHTML = "删除";
+				a.setAttribute("onclick","del(1,'"+id+"')");
+				li6.appendChild(a);
+				
+				var storeName=data[i].storeName; var name = data[i].userName;
+				var phone=data[i].phone;var storePlace=data[i].storePlace;var storeDate= data[i].storeDate;
+				var type=data[i].type;var storeCover=data[i].storeCover;
+				var registerDate=data[i].registerDate;
+				//b.setAttribute("onclick","showModalMsg("+id+",'"+storeName+"','"+name+"','"+phone+"','"+storePlace+"','"+storeDate+"','"+type+"','"+storeCover+"','"+registerDate+"')");
+		
+				
+				ul.appendChild(li1);
+				ul.appendChild(li2);
+				ul.appendChild(li3);
+				ul.appendChild(li4);
+				ul.appendChild(li5);
+				ul.appendChild(li6);
+				
+				ul.onmouseover=function (){
+					this.style.background='#F0FFF0';
+				}
+				ul.onmouseout=function(){
+					this.style.background='';
+				}
+				
+				list.appendChild(ul);
+			}
+		});
+	}
+
+function modify(flag,id){
+	alert(id);
+}
+
+function del(flag,id){
+	$('#del #flag').val(flag);
+	$('#del #id').val(id);
+	$('#del').modal('show');
+}
+
+</script>

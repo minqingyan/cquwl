@@ -1,0 +1,31 @@
+#blockdiv {
+	width: 190px;
+	height: 130px;
+	float: left;
+	display: none;
+	border: 1px solid #ccc;
+	position: absolute;
+	z-index: 99999;
+	opacity: 1;
+	background: white
+}
+
+.pic {
+	width: 100px;
+	height: 100px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	float: left;
+	margin: 10px;
+	overflow: hidden;
+}
+
+.box {
+	width: 300px;
+	height: 210px;
+	margin: 10px 0 10px 10px;
+	float: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

@@ -1,0 +1,217 @@
+<link rel="stylesheet" href="assets/css/ul.css" />
+<link rel="stylesheet" href="assets/css/mqy/indexback.css" />
+#parse("layout/partials/leftnav.html")
+<div class="main-content person-center">
+	<div class="page-content">
+		<div class="page-header">
+			<ul class = "breadcrumb">
+				<li><a href="#">我的订单</a></li>
+				<li class="active">仓库</li>
+			</ul>
+		</div>
+		<!-- /.page-header -->
+		<div class="col-xs-12">
+			<div id="home">
+				<div class="row">
+								<div class="col-xs-12">
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-1">运单号</label>
+										<div class="col-sm-2">
+											<input type="text" id="orderNumber" name="orderNumber" placeholder="输入运单号">
+										</div>	
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-1">货物名称</label>
+										<div class="col-sm-2">
+											<input type="text" id="goodName" name="goodName" placeholder="输入货物名称">
+										</div>
+										<label class="col-sm-1 control-label" for="form-field-1">运单时间 </label>
+										<div class="col-sm-2">
+											<div class="input-group">
+												<input class="form-control date-picker" id="date_picker_dz_start" name="date_picker_dz_start" type="text"
+													data-date-format="yyyy-mm-dd" placeholder="开始时间">
+											</div>
+										</div>
+										<div class="col-sm-2">
+											<div class="input-group">
+												<input class="form-control date-picker" id="date_picker_dz_start" name="date_picker_dz_start" type="text"
+													data-date-format="yyyy-mm-dd" placeholder="结束时间">
+											</div>
+										</div>
+										<button class="btn btn-sm btn-primary" onclick="on-search(store)">搜索</button>		
+									</div>		
+								</div>
+							</div>
+							<div class="hr hr16 dotted"></div>
+					<div class="row">
+							<div class="col-xs-12">
+								<div class="main-cont col-xs-12">
+						<div class="cont-home" style="height: auto;">
+							<div class="cont1-info">
+								<div class="cont1-info-title" style="height:30px;">
+									<div class="info-title1 col-xs-2 lighter">订单编号</div>
+									<div class="info-title1 col-xs-2 lighter">车辆描述</div>
+									<div class="info-title1 col-xs-2 lighter">手机号</div>
+									<div class="info-title1 col-xs-3 lighter" >运输路线</div>
+									<div class="info-title1 col-xs-2 lighter">订单日期</div>
+									<div class="info-title1 col-xs-1 lighter">操作</div>
+								</div>
+								<div class="cont1-info-lift" id="cont1-info-lift" style="border-top: 1px solid #cacaca;">
+									
+								</div>									
+							</div>
+						</div>
+						</div>
+						</div>
+						</div>
+					<!-- home -->
+				</div>
+		</div>
+	</div>
+</div>
+
+<script>
+function getVehicleGoodTableMsg() {
+	$.get("getVehicleOrderMsg",function(data,status){
+		
+		var data = data.data;
+		var length =data.length;
+		var list = document.getElementById("cont1-info-lift");
+		list.innerHTML="";
+		for(var i=0;i<length;i++){
+			
+			var divSpace = document.createElement("div");
+			divSpace.style.cssText="height:2px";
+			list.appendChild(divSpace);
+			var ul = document.createElement("ul");
+			ul.style.cssText="border-bottom: 1px solid #c0c0c0;height: 85px;list-style: none;"
+			var li1=document.createElement("li");
+			li1.className ="col-xs-2";
+			var p=document.createElement("p");
+			li1.appendChild(p);
+			var p=document.createElement("p");
+			p.innerHTML=data[i].orderId;
+			li1.appendChild(p);
+			
+			var li2=document.createElement("li");
+			li2.className ="col-xs-2";
+			var dl =document.createElement("dl");
+			var dt = document.createElement("dt");
+			dt.style.cssText="float: left";
+			var img = document.createElement("img");
+			img.src="assets/img/car/20589830_27.jpg";
+			img.width="70";
+			img.height="70";
+			dt.appendChild(img);
+			var dd =document.createElement("dd");
+			dd.style.cssText="float:left";
+			var ddul=document.createElement("dt");
+			ddul.style.cssText="float:none";
+			// 信息 
+			var p = document.createElement("dd");
+			p.innerHTML=data[i].carOwnerName;
+			var p2=document.createElement("dd");
+			p2.innerHTML="车主";
+			
+			var p4=document.createElement("dd");
+			// 信息 
+			p4.innerHTML=data[i].registerDate;
+			
+			ddul.appendChild(p);
+			ddul.appendChild(p2);
+			ddul.appendChild(p4);
+			dd.appendChild(ddul);
+			
+			li2.appendChild(dt);
+			li2.appendChild(dd);
+			
+			var li3=document.createElement("li");
+			li3.className ="col-xs-2";
+			var p=document.createElement("p");
+			li3.appendChild(p);
+			var p=document.createElement("p");
+			p.innerHTML=data[i].phone;
+			li3.appendChild(p);
+			
+			var li4=document.createElement("li");
+			li4.className ="col-xs-3";
+			
+			var div1 = document.createElement("div");
+			var span1 = document.createElement("span");
+			span1.className = "badge badge-info";
+			span1.innerHTML="起:";
+			var spanmsg = document.createElement("span");
+			spanmsg.innerHTML=data[i].placeStart;
+			div1.appendChild(span1);
+			div1.appendChild(spanmsg);
+			
+			var div2 = document.createElement("div");
+			var span1 = document.createElement("span");
+			span1.className = "badge badge-danger";
+			span1.innerHTML="终:";
+			var spanmsg = document.createElement("span");
+			spanmsg.innerHTML=data[i].placeArrive;
+			div2.appendChild(span1);
+			div2.appendChild(spanmsg);
+			
+			li4.appendChild(div1);
+			li4.appendChild(div2);
+			
+			var li5=document.createElement("li");
+			li5.className ="col-xs-2";
+			var p=document.createElement("p");
+			p.innerHTML="   ";
+			li5.appendChild(p);
+			var p=document.createElement("p");
+			p.innerHTML=data[i].orderDate;
+			li5.appendChild(p);
+			
+			var li6=document.createElement("li");
+			li6.className ="col-xs-1";
+			var p=document.createElement("p");
+			p.innerHTML="  ";
+			li6.appendChild(p);
+			if(data[i].isAssess == 2){
+				var p=document.createElement("p");
+				p.innerHTML = "已评价";
+				li6.appendChild(p);
+			}else{
+				var b=document.createElement("button");
+				b.className = "btn btn-sm btn-primary";
+				b.innerHTML = "评价";
+				b.style.cssText = "width:80px;height:30px";
+				var id = data[i].id;
+				var orderId = data[i].orderId;
+				b.onclick = function() {
+					window.location.href='assess.html?id='+id+"&order_id="+orderId;
+				}
+				li6.appendChild(b);
+			}
+			
+			li1.style.cssText = "float: left;list-style: none;text-align: center;" ;
+			li2.style.cssText = "float: left;list-style: none;text-align: center;" ;
+			li3.style.cssText = "float: left;list-style: none;text-align: center;" ;
+			li4.style.cssText = "float: left;list-style: none;text-align: center;" ;
+			li5.style.cssText = "float: left;list-style: none;text-align: center;" ;
+			li6.style.cssText = "float: left;list-style: none;text-align: center;" ;
+			ul.appendChild(li1);
+			ul.appendChild(li2);
+			ul.appendChild(li3);
+			ul.appendChild(li4);
+			ul.appendChild(li5);
+			ul.appendChild(li6);
+			ul.onmouseover=function (){
+				this.style.background='#F0FFF0';
+			}
+			ul.onmouseout=function(){
+				this.style.background='';
+			}
+			list.appendChild(ul);
+		}
+	});
+}
+
+$(document).ready(function(){
+	getVehicleGoodTableMsg();
+});
+
+
+</script>

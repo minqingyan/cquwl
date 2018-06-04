@@ -1,0 +1,25 @@
+.login-nav{
+	width: 100%;
+	background-color: #ffffff;
+	height: 80px;
+	margin: 0px 0px;
+	top:0px;
+}
+.login-nav-cont{
+	width:1200px;
+	margin: 25px auto 0px auto;
+}
+.main-container-cont{
+	left: 50%;
+	margin-left:50px;
+	float: left;
+	margin-top: 50px;
+}
+.main-cont-img{
+	margin:0 auto;
+	float: left;
+}
+.content-login{
+	width:1200px;
+	margin: 0 auto;
+}

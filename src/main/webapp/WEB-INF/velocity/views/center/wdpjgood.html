@@ -1,0 +1,171 @@
+#parse("layout/partials/leftnav.html")
+<div class="main-content person-center">
+	<div class="page-content">
+		<div class="page-header">
+			<h1>发布详情</h1>
+		</div>
+		<!-- /.page-header -->
+		<div class="col-xs-12">
+			<div class="row">
+
+				<div class="tabbable">
+					<ul class="nav nav-tabs" id="myTab">
+						<li class="active"><a data-toggle="tab" href="#home" aria-expanded="true"> <i
+								class="green ace-icon fa fa-home bigger-120"></i> 已发布货源
+						</a></li>
+
+						<li class=""><a data-toggle="tab" href="#messages" aria-expanded="false"> 已发布车源 </a></li>
+					</ul>
+
+					<div class="tab-content">
+						<div id="home" class="tab-pane fade active in">
+							<div class="row">
+								<div class="col-xs-12">
+									<div align="left">
+										<div class="showTable" style="height: auto;min-height:640px">
+											<div class="bootstrap-table">
+												<div class="fixed-table-toolbar"></div>
+												<div class="fixed-table-container" style="padding-bottom: 0px;">
+													<div class="fixed-table-header" style="display: none;">
+														<table></table>
+													</div>
+													<div class="fixed-table-body">
+														<div class="fixed-table-loading" style="top: 41px; display: none;">Loading, please wait...</div>
+														<table id="vehicleTable" data-toggle="table" data-url="data.json" class="table table-hover">
+															<caption align="top" style="font-size: medium; font-weight: bold; color: gray; font: normal;">已发布货源</caption>
+															<thead>
+																<tr>
+																	<th style="text-align: center;" data-field="vehicle.carNumber" tabindex="0"><div class="th-inner ">车牌号</div>
+																		<div class="fht-cell"></div></th>
+																	<th style="text-align: center;" data-field="vehicle.carMsg" tabindex="0"><div class="th-inner ">车辆信息</div>
+																		<div class="fht-cell"></div></th>
+																	<th style="text-align: center;" data-field="vehicle.carToPlace" tabindex="0"><div class="th-inner ">期望去向城市</div>
+																		<div class="fht-cell"></div></th>
+																	<th style="text-align: center;" data-field="vehicle.carNowPlace" tabindex="0"><div class="th-inner ">当前所在位置</div>
+																		<div class="fht-cell"></div></th>
+																	<th style="text-align: center;" data-field="vehicle.carPhone" tabindex="0"><div class="th-inner ">电话</div>
+																		<div class="fht-cell"></div></th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr class="active" data-index="0">
+																	<td style="text-align: center;">1</td>
+																	<td style="text-align: center;">Anna</td>
+																	<td style="text-align: center;">Anna</td>
+																	<td style="text-align: center;">Anna</td>
+																	<td style="text-align: center;">Anna</td>
+																</tr>
+																<tr data-index="1">
+																	<td style="text-align: center;">2</td>
+																	<td style="text-align: center;">Debbie</td>
+																	<td style="text-align: center;">Anna</td>
+																	<td style="text-align: center;">Anna</td>
+																	<td style="text-align: center;">Anna</td>
+																</tr>
+																<tr data-index="2">
+																	<td style="text-align: center;">3</td>
+																	<td style="text-align: center;">John</td>
+																	<td style="text-align: center;">Anna</td>
+																	<td style="text-align: center;">Anna</td>
+																	<td style="text-align: center;">Anna</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+													<div class="fixed-table-footer" style="display: none;">
+														<table>
+															<tbody>
+																<tr></tr>
+															</tbody>
+														</table>
+													</div>
+													<div class="fixed-table-pagination" style="display: none;"></div>
+												</div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- home -->
+
+						<div id="messages" class="tab-pane fade">
+							<div class="row">
+								<div class="col-xs-12">
+									<div align="left">
+										<div class="showTable" style="height: auto;min-height:640px">
+											<div class="bootstrap-table">
+												<div class="fixed-table-toolbar"></div>
+												<div class="fixed-table-container" style="padding-bottom: 0px;">
+													<div class="fixed-table-header" style="display: none;">
+														<table></table>
+													</div>
+													<div class="fixed-table-body">
+														<div class="fixed-table-loading" style="top: 41px; display: none;">Loading, please wait...</div>
+														<table id="vehicleTable" data-toggle="table" data-url="data.json" class="table table-hover">
+															<caption align="top" style="font-size: medium; font-weight: bold; color: gray; font: normal;">已发布车源</caption>
+															<thead>
+																<tr>
+																	<th style="text-align: center;" data-field="vehicle.carNumber" tabindex="0"><div class="th-inner ">车牌号</div>
+																		<div class="fht-cell"></div></th>
+																	<th style="text-align: center;" data-field="vehicle.carMsg" tabindex="0"><div class="th-inner ">车辆信息</div>
+																		<div class="fht-cell"></div></th>
+																	<th style="text-align: center;" data-field="vehicle.carToPlace" tabindex="0"><div class="th-inner ">期望去向城市</div>
+																		<div class="fht-cell"></div></th>
+																	<th style="text-align: center;" data-field="vehicle.carNowPlace" tabindex="0"><div class="th-inner ">当前所在位置</div>
+																		<div class="fht-cell"></div></th>
+																	<th style="text-align: center;" data-field="vehicle.carPhone" tabindex="0"><div class="th-inner ">电话</div>
+																		<div class="fht-cell"></div></th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr class="active" data-index="0">
+																	<td style="text-align: center;">1</td>
+																	<td style="text-align: center;">Anna</td>
+																	<td style="text-align: center;">Anna</td>
+																	<td style="text-align: center;">Anna</td>
+																	<td style="text-align: center;">Anna</td>
+																</tr>
+																<tr data-index="1">
+																	<td style="text-align: center;">2</td>
+																	<td style="text-align: center;">Debbie</td>
+																	<td style="text-align: center;">Anna</td>
+																	<td style="text-align: center;">Anna</td>
+																	<td style="text-align: center;">Anna</td>
+																</tr>
+																<tr data-index="2">
+																	<td style="text-align: center;">3</td>
+																	<td style="text-align: center;">John</td>
+																	<td style="text-align: center;">Anna</td>
+																	<td style="text-align: center;">Anna</td>
+																	<td style="text-align: center;">Anna</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+													<div class="fixed-table-footer" style="display: none;">
+														<table>
+															<tbody>
+																<tr></tr>
+															</tbody>
+														</table>
+													</div>
+													<div class="fixed-table-pagination" style="display: none;"></div>
+												</div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- messages -->
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

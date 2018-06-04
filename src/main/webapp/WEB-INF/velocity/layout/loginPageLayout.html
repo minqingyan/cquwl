@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+#parse("layout/partials/head.html")
+<body class="no-skin">
+	<div class="navbar-container" id="navbar-container">
+		#parse("layout/partials/header.html")
+		<div id="navbar" class="navbar navbar-default">
+			<script type="text/javascript">
+				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+			</script>
+
+			#parse("layout/partials/menu.html")
+		</div>
+	</div>
+	<!-- /section:basics/navbar.layout -->
+	<div class="main-container" id="main-container">
+		<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+		<!-- #section:basics/sidebar -->
+		<div id="sidebar" class="sidebar                  responsive">
+			<script type="text/javascript">
+					try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+				</script>
+
+			<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+				<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+					<button class="btn btn-success">
+						<i class="ace-icon fa fa-signal"></i>
+					</button>
+
+					<button class="btn btn-info">
+						<i class="ace-icon fa fa-pencil"></i>
+					</button>
+
+					<!-- #section:basics/sidebar.layout.shortcuts -->
+					<button class="btn btn-warning">
+						<i class="ace-icon fa fa-users"></i>
+					</button>
+
+					<button class="btn btn-danger">
+						<i class="ace-icon fa fa-cogs"></i>
+					</button>
+
+					<!-- /section:basics/sidebar.layout.shortcuts -->
+				</div>
+
+				<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+					<span class="btn btn-success"></span> <span class="btn btn-info"></span> <span class="btn btn-warning"></span> <span
+						class="btn btn-danger"></span>
+				</div>
+			</div>
+			<!-- /.sidebar-shortcuts -->
+
+			<ul class="nav nav-list">
+				<li class=""><a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-tachometer"></i> <span class="menu-text">
+							基本信息 </span> <b class="arrow fa fa-angle-down"></b>
+				</a> <b class="arrow"></b>
+					<ul class="submenu">
+						<li class=""><a href="zhmanage"> <i class="menu-icon fa fa-caret-right"></i> 账户管理
+						</a> <b class="arrow"></b></li>
+						<li class=""><a href="rzmsg"> <i class="menu-icon fa fa-caret-right"></i> 认证信息
+						</a> <b class="arrow"></b></li>
+						<li class=""><a href="onlinebs"> <i class="menu-icon fa fa-caret-right"></i> 线上业务开通
+						</a> <b class="arrow"></b></li>
+						<li class=""><a href="#"> <i class="menu-icon fa fa-caret-right"></i> 关联账号
+						</a> <b class="arrow"></b></li>
+					</ul></li>
+
+				<li class=""><a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-desktop"></i> <span class="menu-text">
+							我的车辆 </span> <b class="arrow fa fa-angle-down"></b>
+				</a> <b class="arrow"></b>
+
+					<ul class="submenu">
+
+						<li class=""><a href="#"> <i class="menu-icon fa fa-caret-right"></i> 常用车辆
+						</a> <b class="arrow"></b></li>
+
+						<li class=""><a href="#"> <i class="menu-icon fa fa-caret-right"></i> 合同车辆
+						</a> <b class="arrow"></b></li>
+
+						<li class=""><a href="#"> <i class="menu-icon fa fa-caret-right"></i> 身份证查询
+						</a> <b class="arrow"></b></li>
+					</ul></li>
+
+				<li class=""><a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-list"></i> <span class="menu-text">
+							我的货源 </span> <b class="arrow fa fa-angle-down"></b>
+				</a> <b class="arrow"></b>
+
+					<ul class="submenu">
+						<li class=""><a href="#"> <i class="menu-icon fa fa-caret-right"></i> 发布货源
+						</a> <b class="arrow"></b></li>
+
+						<li class=""><a href="#"> <i class="menu-icon fa fa-caret-right"></i> 我的货源
+						</a> <b class="arrow"></b></li>
+					</ul></li>
+
+				<li class=""><a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-pencil-square-o"></i> <span
+						class="menu-text"> 我的订单</span> <b class="arrow fa fa-angle-down"></b>
+				</a> <b class="arrow"></b>
+
+					<ul class="submenu">
+						<li class=""><a href="#"> <i class="menu-icon fa fa-caret-right"></i> 在线订单管理
+						</a> <b class="arrow"></b></li>
+
+						<li class=""><a href="#"> <i class="menu-icon fa fa-caret-right"></i> 分包订单
+						</a> <b class="arrow"></b></li>
+
+						<li class=""><a href="#"> <i class="menu-icon fa fa-caret-right"></i> 导入订单管理
+						</a> <b class="arrow"></b></li>
+					</ul></li>
+
+				<li class=""><a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-list-alt"></i> <span class="menu-text">
+							我的客户 </span> <b class="arrow fa fa-angle-down"></b>
+				</a> <b class="arrow"></b>
+					<ul class="submenu">
+
+						<li class=""><a href="#"> <i class="menu-icon fa fa-caret-right"></i> 我的分包商
+						</a> <b class="arrow"></b></li>
+					</ul></li>
+
+				<li class=""><a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-tag"></i> <span class="menu-text">
+							我的信誉 </span> <b class="arrow fa fa-angle-down"></b>
+				</a> <b class="arrow"></b>
+
+					<ul class="submenu">
+						<li class=""><a href="#"> <i class="menu-icon fa fa-caret-right"></i> 交易评价
+						</a> <b class="arrow"></b></li>
+
+						<li class=""><a href="#"> <i class="menu-icon fa fa-caret-right"></i> 信誉评价
+						</a> <b class="arrow"></b></li>
+
+					</ul></li>
+
+			</ul>
+			<!-- /.nav-list -->
+
+			<!-- #section:basics/sidebar.layout.minimize -->
+			<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+				<i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left"
+					data-icon2="ace-icon fa fa-angle-double-right"></i>
+			</div>
+
+			<!-- /section:basics/sidebar.layout.minimize -->
+			<script type="text/javascript">
+					try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+				</script>
+		</div>
+		<div class="main-content">
+			<div class="page-content">
+				<!-- #section:settings.box -->
+				<div class="ace-settings-container" id="ace-settings-container">
+					<div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+						<i class="ace-icon fa fa-cog bigger-130"></i>
+					</div>
+
+					<div class="ace-settings-box clearfix" id="ace-settings-box">
+						<div class="pull-left width-50">
+							<!-- #section:settings.skins -->
+							<div class="ace-settings-item">
+								<div class="pull-left">
+									<select id="skin-colorpicker" class="hide">
+										<option data-skin="no-skin" value="#438EB9">#438EB9</option>
+										<option data-skin="skin-1" value="#222A2D">#222A2D</option>
+										<option data-skin="skin-2" value="#C6487E">#C6487E</option>
+										<option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+									</select>
+								</div>
+								<span>&nbsp; Choose Skin</span>
+							</div>
+
+							<!-- /section:settings.skins -->
+
+							<!-- #section:settings.navbar -->
+							<div class="ace-settings-item">
+								<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" /> <label class="lbl" for="ace-settings-navbar">
+									Fixed Navbar</label>
+							</div>
+
+							<!-- /section:settings.navbar -->
+
+							<!-- #section:settings.sidebar -->
+							<div class="ace-settings-item">
+								<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" /> <label class="lbl"
+									for="ace-settings-sidebar"> Fixed Sidebar</label>
+							</div>
+
+							<!-- /section:settings.sidebar -->
+
+							<!-- #section:settings.breadcrumbs -->
+							<div class="ace-settings-item">
+								<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" /> <label class="lbl"
+									for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
+							</div>
+
+							<!-- /section:settings.breadcrumbs -->
+
+							<!-- #section:settings.rtl -->
+							<div class="ace-settings-item">
+								<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" /> <label class="lbl" for="ace-settings-rtl">
+									Right To Left (rtl)</label>
+							</div>
+
+							<!-- /section:settings.rtl -->
+
+							<!-- #section:settings.container -->
+							<div class="ace-settings-item">
+								<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" /> <label class="lbl"
+									for="ace-settings-add-container"> Inside <b>.container</b>
+								</label>
+							</div>
+
+							<!-- /section:settings.container -->
+						</div>
+						<!-- /.pull-left -->
+
+						<div class="pull-left width-50">
+							<!-- #section:basics/sidebar.options -->
+							<div class="ace-settings-item">
+								<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" /> <label class="lbl" for="ace-settings-hover">
+									Submenu on Hover</label>
+							</div>
+
+							<div class="ace-settings-item">
+								<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" /> <label class="lbl"
+									for="ace-settings-compact"> Compact Sidebar</label>
+							</div>
+
+							<div class="ace-settings-item">
+								<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" /> <label class="lbl"
+									for="ace-settings-highlight"> Alt. Active Item</label>
+							</div>
+
+							<!-- /section:basics/sidebar.options -->
+						</div>
+						<!-- /.pull-left -->
+					</div>
+					<!-- /.ace-settings-box -->
+				</div>
+				<!-- /.ace-settings-container -->
+
+				<!-- /section:settings.box -->
+				<div class="row">
+					<div class="col-xs-12">
+						<!-- PAGE CONTENT BEGINS -->
+						$screen_content
+						<!-- PAGE CONTENT ENDS -->
+					</div>
+					<!-- /.col -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.page-content -->
+		</div>
+	</div>
+	#parse("layout/partials/footer.html")
+	#parse("layout/partials/foot.html")
+</body>
+</html>

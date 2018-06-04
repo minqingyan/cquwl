@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm 
+    http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+	version="2.0">
+
+	<named-query name="CQUWL_SELECT_ADMINUSER_BY_PHONE">
+		<query>
+		   select user from com.cactus.cquwl.pojo.AdminUser user
+            where user.phone=:phone
+         </query>
+	</named-query>
+
+	<named-query name="CQUWL_FIND_MYPUBLISH_BY_ID">
+		<query>
+		   select publish from com.cactus.cquwl.pojo.MyPublish publish
+            where publish.id=:publish
+         </query>
+	</named-query>
+
+	<named-query name="CQUWL_FIND_MYPUBLISH_BY_USER">
+		<query>
+			select publish from com.cactus.cquwl.pojo.MyPublish publish
+			where publish.adminUser=:user
+		</query>
+	</named-query>
+
+	<named-query name="CQUWL_FIND_BASICGOOD_BY_STATE">
+		<query>
+			select good from com.cactus.cquwl.pojo.BasicGood good
+			where good.state=:state
+		</query>
+	</named-query>
+
+	<named-query name="CQUWL_FIND_CARSOURCE_BY_STATE">
+		<query>
+			select good from com.cactus.cquwl.pojo.CarSource good
+			where good.state between :firstState and :endState
+		</query>
+	</named-query>
+	
+	<named-query name="CQUWL_FIND_ORDERS_BY_USER">
+		<query>
+			select order from com.cactus.cquwl.pojo.MyOrders order
+			where order.adminUser=:user and order.flag=:flag
+		</query>
+	</named-query>
+	
+	<named-query name="CQUWL_FIND_REMAINCARSOURCE_BY_CARSOURCE_AND_STATE">
+		<query>
+			select car from com.cactus.cquwl.pojo.RemainCarSource car
+			where car.state=:state and car.carSource=:carSource
+		</query>
+	</named-query>
+	
+	<named-query name="CQUWL_FIND_ORDERS_BY_ID">
+		<query>
+			select order from com.cactus.cquwl.pojo.MyOrders order
+			where order.orderId=:orderId
+		</query>
+	</named-query>
+	
+	<named-query name="CQUWL_FIND_CARASSESS_BY_CAR">
+		<query>
+			select carAssess from com.cactus.cquwl.pojo.AllCarAssess carAssess
+			where carAssess.car=:car
+		</query>
+	</named-query>
+	
+	<named-query name="CQUWUL_SELECT_STOREGOOD_STATE">
+		<query>
+			select storeGood from com.cactus.cquwl.pojo.StoreGood storeGood
+			where storeGood.state=:state
+		</query>
+	</named-query>
+	
+	<named-query name="CQUWL_SELECT_STORESOURCE_STATE">
+		<query>
+			select storeSource from com.cactus.cquwl.pojo.StoreSource storeSource
+			where storeSource.state = :state
+		</query>
+	</named-query>
+	
+	<named-query name="CQUWL_FIND_MY_BASICGOOD_BY_ADMINUSER_AND_STATE">
+		<query>
+			select basicGood from com.cactus.cquwl.pojo.BasicGood basicGood 
+			where basicGood.publish in 
+			(select myPublish from com.cactus.cquwl.pojo.MyPublish myPublish 
+			where myPublish.adminUser = :adminUser)
+		</query>
+	</named-query>
+
+	<named-query name="CQUWL_FIND_MY_STOREGOOD_BY_ADMINUSER_AND_STATE">
+		<query>
+			select storeGood from com.cactus.cquwl.pojo.StoreGood storeGood 
+			where storeGood.myPublish in 
+			(select myPublish from com.cactus.cquwl.pojo.MyPublish myPublish 
+			where myPublish.adminUser = :adminUser and myPublish.state=:state)
+		</query>
+	</named-query>
+	
+	<named-query name="CQUWL_FIND_CARSOURCE_BY_PLACE_WEIGHT_TIME">
+		<query>
+			select carSource from com.cactus.cquwl.pojo.CarSource carSource
+			where carSource.state = 1
+				and :startTime > carSource.startTime
+				and carSource.placeStart = :placeStart
+				and carSource.placeArrive = :placeArrive
+		</query>
+	</named-query>
+	
+</entity-mappings>
+	

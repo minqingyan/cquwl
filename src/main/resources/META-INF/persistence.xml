@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
+	 					http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+
+	<persistence-unit name="cquwlPU" transaction-type="RESOURCE_LOCAL">
+		<mapping-file>META-INF/cquwl.orm.xml</mapping-file>
+
+		<class>com.cactus.cquwl.pojo.AdminPermission</class>
+		<class>com.cactus.cquwl.pojo.AdminRole_Permission_xref</class>
+		<class>com.cactus.cquwl.pojo.AdminRole_User_xref</class>
+		<class>com.cactus.cquwl.pojo.AdminRole</class>
+		<class>com.cactus.cquwl.pojo.AdminUser</class>
+		<class>com.cactus.cquwl.pojo.AdminUserRole</class>
+		<class>com.cactus.cquwl.pojo.AllCarAssess</class>
+		<class>com.cactus.cquwl.pojo.TotalGoodAssess</class>
+		<class>com.cactus.cquwl.pojo.AllStoreAssess</class>
+		<class>com.cactus.cquwl.pojo.BasicGood</class>
+		<class>com.cactus.cquwl.pojo.CarAssess</class>
+		<class>com.cactus.cquwl.pojo.CarSource</class>
+		<class>com.cactus.cquwl.pojo.Corporation</class>
+		<class>com.cactus.cquwl.pojo.GoodAssess</class>
+		<class>com.cactus.cquwl.pojo.MyPublish</class>
+		<class>com.cactus.cquwl.pojo.Person</class>
+		<class>com.cactus.cquwl.pojo.StoreAssess</class>
+		<class>com.cactus.cquwl.pojo.StoreSource</class>
+		<class>com.cactus.cquwl.pojo.MyOrders</class>
+		<class>com.cactus.cquwl.pojo.RemainCarSource</class>
+		<class>com.cactus.cquwl.pojo.StoreGood</class>
+	</persistence-unit>
+</persistence>
